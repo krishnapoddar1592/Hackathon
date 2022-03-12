@@ -1,13 +1,15 @@
-{% extends 'base.html' %}
 
+{% extends 'base.html' %}
 {% block content %}
+
   <h2>Upload</h2>
+  {% comment %} <p>{{file_name}}</p> {% endcomment %}
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <input type="file" name="document">
     <button type="submit">Upload file</button>
   </form>
   {% if url %}
-    <p>Uploaded file: <a href="{{ url }}">{{ url }}</a></p>
+    <p>Uploaded file: {{file_name}} <a href="{{ url }}" target="_blank" rel="noopener noreferrer">(Open file)</a></p>
   {% endif %}
 {% endblock %}
